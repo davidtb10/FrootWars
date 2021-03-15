@@ -42,7 +42,7 @@ $(window).load(function () {
 var game = {
 	// Inicialización de objetos, precarga de elementos y pantalla de inicio
 	init: function () {
-		// Inicialización de objetos   
+		// Inicialización de objetos
 		levels.init();
 		loader.init();
 		mouse.init();
@@ -72,11 +72,11 @@ var game = {
 	startBackgroundMusic: function () {
 		var toggleImage = $("#togglemusic")[0];
 		game.backgroundMusic.play();
-		toggleImage.src = "images/icons/sound.png";
+		toggleImage.src = "images/icons/sound_on.png";
 	},
 	stopBackgroundMusic: function () {
 		var toggleImage = $("#togglemusic")[0];
-		toggleImage.src = "images/icons/nosound.png";
+		toggleImage.src = "images/icons/sound_off.png";
 		game.backgroundMusic.pause();
 		game.backgroundMusic.currentTime = 0; // Ir al comienzo de la canción
 	},
@@ -84,10 +84,10 @@ var game = {
 		var toggleImage = $("#togglemusic")[0];
 		if (game.backgroundMusic.paused) {
 			game.backgroundMusic.play();
-			toggleImage.src = "images/icons/sound.png";
+			toggleImage.src = "images/icons/sound_on.png";
 		} else {
 			game.backgroundMusic.pause();
-			$("#togglemusic")[0].src = "images/icons/nosound.png";
+			$("#togglemusic")[0].src = "images/icons/sound_off.png";
 		}
 	},
 	showLevelScreen: function () {
@@ -104,14 +104,14 @@ var game = {
 		game.lastUpdateTime = undefined;
 		levels.load(game.currentLevel.number + 1);
 	},
-	// Modo Juego 
+	// Modo Juego
 	mode: "intro",
 	// Coordenadas X & Y de la honda
 	slingshotX: 140,
 	slingshotY: 280,
 	start: function () {
 		$('.gamelayer').hide();
-		// Display the game canvas and score 
+		// Display the game canvas and score
 		$('#gamecanvas').show();
 		$('#scorescreen').show();
 
@@ -334,7 +334,7 @@ var game = {
 	drawAllBodies: function () {
 		box2d.world.DrawDebugData();
 
-		// Iterar a través de todos los cuerpos y dibujarlos en el lienzo del juego		  
+		// Iterar a través de todos los cuerpos y dibujarlos en el lienzo del juego
 		for (var body = box2d.world.GetBodyList(); body; body = body.GetNext()) {
 			var entity = body.GetUserData();
 
@@ -395,9 +395,9 @@ var game = {
 var levels = {
 	// Datos de nivel
 	data: [
-		{   // Primer nivel 
-			foreground: 'desert-foreground',
-			background: 'clouds-background',
+		{   // Primer nivel
+			foreground: 'suelo-foreground',
+			background: 'estadio-background',
 			entities: [
 				{ type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
 				{ type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
@@ -415,8 +415,8 @@ var levels = {
 			]
 		},
 		{   // Segundo nivel
-			foreground: 'desert-foreground',
-			background: 'clouds-background',
+			foreground: 'suelo-foreground',
+			background: 'estadio-background',
 			entities: [
 				{ type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
 				{ type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
@@ -578,7 +578,7 @@ var entities = {
 			case "ground": // Rectángulos simples
 				// No hay necesidad de salud. Estos son indestructibles
 				entity.shape = "rectangle";
-				// No hay necesidad de sprites. Éstos no serán dibujados en absoluto 
+				// No hay necesidad de sprites. Éstos no serán dibujados en absoluto
 				box2d.createRectangle(entity, definition);
 				break;
 			case "hero":	// Círculos simples
@@ -662,7 +662,7 @@ var box2d = {
 			// Este listener es llamado con mucha frecuencia. Filtra los impulsos muy prqueños.
 			// Después de probar diferentes valores, 5 parece funcionar bien
 			if (impulseAlongNormal > 5) {
-				// Si los objetos tienen una salud, reduzca la salud por el valor del impulso			
+				// Si los objetos tienen una salud, reduzca la salud por el valor del impulso
 				if (entity1.health) {
 					entity1.health -= impulseAlongNormal;
 				}
@@ -671,7 +671,7 @@ var box2d = {
 					entity2.health -= impulseAlongNormal;
 				}
 
-				// Si los objetos tienen un sonido de rebote, reproducirlos				
+				// Si los objetos tienen un sonido de rebote, reproducirlos
 				if (entity1.bounceSound) {
 					entity1.bounceSound.play();
 				}
@@ -757,7 +757,7 @@ var loader = {
 		var mp3Support, oggSupport;
 		var audio = document.createElement('audio');
 		if (audio.canPlayType) {
-			// Actualmente canPlayType() devuelve: "", "maybe" o "probably" 
+			// Actualmente canPlayType() devuelve: "", "maybe" o "probably"
 			mp3Support = "" != audio.canPlayType('audio/mpeg');
 			oggSupport = "" != audio.canPlayType('audio/ogg; codecs="vorbis"');
 		} else {

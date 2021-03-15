@@ -51,12 +51,12 @@ var game = {
 
 		//"Kindergarten" by Gurdonark
 		//http://ccmixter.org/files/gurdonark/26491 is licensed under a Creative Commons license
-		game.backgroundMusic = loader.loadSound('audio/gurdonark-kindergarten');
+		game.backgroundMusic = loader.loadSound('audio/wiimusic');
 
-		game.slingshotReleasedSound = loader.loadSound("audio/released");
+		game.slingshotReleasedSound = loader.loadSound("audio/cartoonreleased");
 		game.bounceSound = loader.loadSound('audio/bounce');
 		game.breakSound = {
-			"glass": loader.loadSound('audio/glassbreak'),
+			"ice": loader.loadSound('audio/icebreak'),
 			"wood": loader.loadSound('audio/woodbreak')
 		};
 
@@ -403,15 +403,15 @@ var levels = {
 				{ type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
 
 				{ type: "block", name: "wood", x: 520, y: 380, angle: 90, width: 100, height: 25 },
-				{ type: "block", name: "glass", x: 520, y: 280, angle: 90, width: 100, height: 25 },
-				{ type: "villain", name: "agua", x: 520, y: 205, calories: 590 },
+				{ type: "block", name: "ice", x: 520, y: 280, angle: 90, width: 100, height: 25 },
+				{ type: "villain", name: "waterbottle", x: 520, y: 205, calories: 590 },
 
 				{ type: "block", name: "wood", x: 620, y: 380, angle: 90, width: 100, height: 25 },
-				{ type: "block", name: "glass", x: 620, y: 280, angle: 90, width: 100, height: 25 },
-				{ type: "villain", name: "piña", x: 620, y: 205, calories: 420 },
+				{ type: "block", name: "ice", x: 620, y: 280, angle: 90, width: 100, height: 25 },
+				{ type: "villain", name: "pineapplebottle", x: 620, y: 205, calories: 420 },
 
-				{ type: "hero", name: "tenis", x: 80, y: 405 },
-				{ type: "hero", name: "futbol", x: 140, y: 405 },
+				{ type: "hero", name: "tennis", x: 80, y: 405 },
+				{ type: "hero", name: "football", x: 140, y: 405 },
 			]
 		},
 		{   // Segundo nivel
@@ -424,20 +424,20 @@ var levels = {
 				{ type: "block", name: "wood", x: 820, y: 380, angle: 90, width: 100, height: 25 },
 				{ type: "block", name: "wood", x: 720, y: 380, angle: 90, width: 100, height: 25 },
 				{ type: "block", name: "wood", x: 620, y: 380, angle: 90, width: 100, height: 25 },
-				{ type: "block", name: "glass", x: 670, y: 317.5, width: 100, height: 25 },
-				{ type: "block", name: "glass", x: 770, y: 317.5, width: 100, height: 25 },
+				{ type: "block", name: "ice", x: 670, y: 317.5, width: 100, height: 25 },
+				{ type: "block", name: "ice", x: 770, y: 317.5, width: 100, height: 25 },
 
-				{ type: "block", name: "glass", x: 670, y: 255, angle: 90, width: 100, height: 25 },
-				{ type: "block", name: "glass", x: 770, y: 255, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "ice", x: 670, y: 255, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "ice", x: 770, y: 255, angle: 90, width: 100, height: 25 },
 				{ type: "block", name: "wood", x: 720, y: 192.5, width: 100, height: 25 },
 
-				{ type: "villain", name: "naranja", x: 715, y: 155, calories: 590 },
-				{ type: "villain", name: "cola", x: 670, y: 405, calories: 420 },
+				{ type: "villain", name: "orangebottle", x: 715, y: 155, calories: 590 },
+				{ type: "villain", name: "colacan", x: 670, y: 405, calories: 420 },
 				{ type: "villain", name: "jungle", x: 765, y: 400, calories: 150 },
 
-				{ type: "hero", name: "billar", x: 30, y: 415 },
-				{ type: "hero", name: "baloncesto", x: 80, y: 405 },
-				{ type: "hero", name: "bolos", x: 140, y: 405 },
+				{ type: "hero", name: "pool", x: 30, y: 415 },
+				{ type: "hero", name: "basketball", x: 80, y: 405 },
+				{ type: "hero", name: "bowling", x: 140, y: 405 },
 			]
 		}
 	],
@@ -494,59 +494,59 @@ var levels = {
 
 var entities = {
 	definitions: {
-		"glass": {
-			fullHealth: 100,
-			density: 2.4,
-			friction: 0.4,
-			restitution: 0.15,
-		},
 		"wood": {
 			fullHealth: 500,
 			density: 0.7,
 			friction: 0.4,
 			restitution: 0.4,
 		},
+		"ice": {
+			fullHealth: 100,
+			density: 2.4,
+			friction: 0.4,
+			restitution: 0.15,
+		},
 		"dirt": {
 			density: 3.0,
 			friction: 1.5,
 			restitution: 0.2,
 		},
-		"futbol": {
+		"football": {
 			shape: "circle",
 			radius: 20,
 			density: 3.0,
 			friction: 0.5,
 			restitution: 0.6,
 		},
-		"baloncesto": {
+		"basketball": {
 			shape: "circle",
 			radius: 20,
 			density: 3.0,
 			friction: 0.5,
 			restitution: 0.7,
 		},
-		"bolos": {
+		"bowling": {
 			shape: "circle",
 			radius: 20,
 			density: 4.0,
 			friction: 0.7,
 			restitution: 0.2,
 		},
-		"tenis": {
+		"tennis": {
 			shape: "circle",
 			radius: 12,
 			density: 2.5,
 			friction: 0.5,
 			restitution: 0.7,
 		},
-		"billar": {
+		"pool": {
 			shape: "circle",
 			radius:12,
 			density: 3.5,
 			friction: 0.7,
 			restitution: 0.2,
 		},
-		"agua": {
+		"waterbottle": {
 			shape: "rectangle",
 			fullHealth: 80,
 			width: 30,
@@ -555,7 +555,7 @@ var entities = {
 			friction: 0.1,
 			restitution: 0.1,
 		},
-		"cola": {
+		"colacan": {
 			shape: "rectangle",
 			fullHealth: 10,
 			width: 20,
@@ -573,7 +573,7 @@ var entities = {
 			friction: 0.1,
 			restitution: 0.1,
 		},
-		"naranja": {
+		"orangebottle": {
 			shape: "rectangle",
 			fullHealth: 50,
 			width: 25,
@@ -582,7 +582,7 @@ var entities = {
 			friction: 0.1,
 			restitution: 0.1,
 		},
-		"piña": {
+		"pineapplebottle": {
 			shape: "rectangle",
 			fullHealth: 30,
 			width: 20,

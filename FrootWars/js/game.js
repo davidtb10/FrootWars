@@ -54,7 +54,7 @@ var game = {
 		game.backgroundMusic = loader.loadSound('audio/wiimusic');
 
 		game.slingshotReleasedSound = loader.loadSound("audio/cartoonreleased");
-		game.bounceSound = loader.loadSound('audio/bounce');
+		game.bounceSound = loader.loadSound('audio/bounce2');
 		game.breakSound = {
 			"ice": loader.loadSound('audio/icebreak'),
 			"wood": loader.loadSound('audio/woodbreak')

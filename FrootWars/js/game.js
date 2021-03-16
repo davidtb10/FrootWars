@@ -465,10 +465,10 @@ var levels = {
 				{ type: "block", name: "wood", x: 650, y: 130, angle:90, width: 100, height: 25 },
 				{ type: "block", name: "ice", x: 600, y: 67.5, width: 100, height: 25 },
 
-				{ type: "villain", name: "orangebottle", x: 570, y: 380, calories: 590 },
-				{ type: "villain", name: "colacan", x: 770, y: 380, calories: 420 },
+				{ type: "villain", name: "orangebottle", x: 570, y: 380, calories: 300 },
+				{ type: "villain", name: "colacan", x: 770, y: 380, calories: 200 },
 				{ type: "villain", name: "jungle", x: 880, y: 380, calories: 150 },
-				{ type: "villain", name: "pineapplebottle", x: 785, y: 255, calories: 150 },
+				{ type: "villain", name: "pineapplebottle", x: 780, y: 255, calories: 150 },
 				{ type: "villain", name: "waterbottle", x: 600, y: 130, calories: 150 },
 
 				{ type: "hero", name: "pool", x: 30, y: 415 },
@@ -531,13 +531,13 @@ var levels = {
 var entities = {
 	definitions: {
 		"wood": {
-			fullHealth: 500,
+			fullHealth: 700,
 			density: 0.7,
 			friction: 0.4,
 			restitution: 0.4,
 		},
 		"ice": {
-			fullHealth: 100,
+			fullHealth: 300,
 			density: 2.4,
 			friction: 0.4,
 			restitution: 0.15,
@@ -593,7 +593,7 @@ var entities = {
 		},
 		"colacan": {
 			shape: "rectangle",
-			fullHealth: 10,
+			fullHealth: 50,
 			width: 20,
 			height: 40,
 			density: 1,
@@ -602,7 +602,7 @@ var entities = {
 		},
 		"jungle": {
 			shape: "rectangle",
-			fullHealth: 10,
+			fullHealth: 50,
 			width: 20,
 			height: 40,
 			density: 1,
@@ -611,7 +611,7 @@ var entities = {
 		},
 		"orangebottle": {
 			shape: "rectangle",
-			fullHealth: 50,
+			fullHealth: 100,
 			width: 25,
 			height: 60,
 			density: 3,
@@ -620,7 +620,7 @@ var entities = {
 		},
 		"pineapplebottle": {
 			shape: "rectangle",
-			fullHealth: 30,
+			fullHealth: 80,
 			width: 20,
 			height: 50,
 			density: 2,

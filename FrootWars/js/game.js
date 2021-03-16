@@ -439,6 +439,42 @@ var levels = {
 				{ type: "hero", name: "basketball", x: 80, y: 405 },
 				{ type: "hero", name: "bowling", x: 140, y: 405 },
 			]
+		},
+		{
+			foreground: 'suelo-foreground',
+			background: 'estadio-background',
+			entities: [
+				{ type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
+				{ type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
+
+				{ type: "block", name: "wood", x: 520, y: 380, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "wood", x: 620, y: 380, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "wood", x: 720, y: 380, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "wood", x: 820, y: 380, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "ice", x: 570, y: 317.5, width: 100, height: 25 },
+				{ type: "block", name: "ice", x: 670, y: 317.5, width: 100, height: 25 },
+				{ type: "block", name: "ice", x: 770, y: 317.5, width: 100, height: 25 },
+
+				{ type: "block", name: "wood", x: 535, y: 255, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "wood", x: 635, y: 255, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "wood", x: 735, y: 255, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "ice", x: 585, y: 192.5, width: 100, height: 25 },
+				{ type: "block", name: "ice", x: 685, y: 192.5, width: 100, height: 25 },
+
+				{ type: "block", name: "wood", x: 550, y: 130, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "wood", x: 650, y: 130, angle:90, width: 100, height: 25 },
+				{ type: "block", name: "ice", x: 600, y: 67.5, width: 100, height: 25 },
+
+				{ type: "villain", name: "orangebottle", x: 570, y: 380, calories: 590 },
+				{ type: "villain", name: "colacan", x: 770, y: 380, calories: 420 },
+				{ type: "villain", name: "jungle", x: 880, y: 380, calories: 150 },
+				{ type: "villain", name: "pineapplebottle", x: 785, y: 255, calories: 150 },
+				{ type: "villain", name: "waterbottle", x: 600, y: 130, calories: 150 },
+
+				{ type: "hero", name: "pool", x: 30, y: 415 },
+				{ type: "hero", name: "tennis", x: 80, y: 405 },
+				{ type: "hero", name: "bowling", x: 140, y: 405 },
+			]
 		}
 	],
 

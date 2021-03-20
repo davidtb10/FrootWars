@@ -500,6 +500,65 @@ var levels = {
 				{ type: "hero", name: "tennis", x: 80, y: 405 },
 				{ type: "hero", name: "bowling", x: 140, y: 405 },
 			]
+		},
+		{
+			foreground: 'suelo-foreground',
+			background: 'estadio-background',
+			entities: [
+				{ type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
+				{ type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
+
+				{ type: "block", name: "wood", x: 480, y: 380, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "wood", x: 580, y: 380, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "wood", x: 720, y: 380, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "wood", x: 820, y: 380, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "ice", x: 530, y: 317.5, width: 100, height: 25 },
+				{ type: "block", name: "ice", x: 770, y: 317.5, width: 100, height: 25 },
+
+				{ type: "block", name: "wood", x: 505, y: 255, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "wood", x: 555, y: 255, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "wood", x: 745, y: 255, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "wood", x: 795, y: 255, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "ice", x: 530, y: 192.5, width: 100, height: 25 },
+				{ type: "block", name: "ice", x: 770, y: 192.5, width: 100, height: 25 },
+
+				{ type: "villain", name: "waterbottle", x: 530, y: 380, calories: 300 },
+				{ type: "villain", name: "colacan", x: 770, y: 380, calories: 200 },
+				{ type: "villain", name: "orangebottle", x: 530, y: 130, calories: 150 },
+				{ type: "villain", name: "jungle", x: 770, y: 130, calories: 150 },
+
+				{ type: "hero", name: "basketball", x: 30, y: 415 },
+				{ type: "hero", name: "pool", x: 80, y: 405 },
+				{ type: "hero", name: "tennis", x: 140, y: 405 },
+			]
+		},
+		{
+			foreground: 'suelo-foreground',
+			background: 'estadio-background',
+			entities: [
+				{ type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
+				{ type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
+
+				{ type: "block", name: "wood", x: 620, y: 380, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "wood", x: 720, y: 380, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "ice", x: 670, y: 317.5, width: 100, height: 25 },
+
+				{ type: "block", name: "wood", x: 635, y: 255, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "wood", x: 705, y: 255, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "ice", x: 670, y: 192.5, width: 100, height: 25 },
+
+				{ type: "block", name: "wood", x: 635, y: 130, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "wood", x: 705, y: 130, angle: 90, width: 100, height: 25 },
+				{ type: "block", name: "ice", x: 670, y: 67.5, width: 100, height: 25 },
+
+				{ type: "villain", name: "waterbottle", x: 670, y: 380, calories: 300 },
+				{ type: "villain", name: "colacan", x: 670, y: 255, calories: 200 },
+				{ type: "villain", name: "orangebottle", x: 670, y: 130, calories: 150 },
+
+				{ type: "hero", name: "football", x: 30, y: 415 },
+				{ type: "hero", name: "tennis", x: 80, y: 405 },
+				{ type: "hero", name: "basketball", x: 140, y: 405 },
+			]
 		}
 	],
 
@@ -546,7 +605,7 @@ var levels = {
 
 		//Llamar a game.start() una vez que los assets se hayan cargado
 		if (loader.loaded) {
-			game.start()
+			game.start();
 		} else {
 			loader.onload = game.start;
 		}
@@ -889,6 +948,8 @@ var loader = {
 		if (loader.loadedCount === loader.totalCount) {
 			// Loader se ha cargado completamente. . .
 			loader.loaded = true;
+			loader.loadedCount = 0;
+			loader.totalCount = 0;
 			// Ocultar la pantalla de carga
 			$('#loadingscreen').hide();
 			//Y llamar al método loader.onload si existe

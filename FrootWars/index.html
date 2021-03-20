@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-type" content="text/html"; charset="utf-8">
-        <title>Froot Wars</title>
+        <title>Furbo</title>
         <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/Box2dWeb-2.1.a.3.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/game.js" type="text/javascript" charset="utf-8"></script>
@@ -22,7 +22,7 @@
 
             <div id="gamestartscreen" class="gamelayer">
                 <img src="images/icons/play_button.png" alt="Play Game" onclick="game.showLevelScreen();"><br>
-                <img src="images/icons/settings_button.png" alt="Settings">
+                <img src="images/icons/settings_button.png" alt="Settings" onclick="game.showSettingsScreen();">
             </div>
 
             <div id="levelselectscreen" class="gamelayer">
@@ -38,6 +38,23 @@
                     <p id="playcurrentlevel" onclick="game.restartLevel();"><img src="images/icons/prev.png">Replay Current Level</p>
                     <p id="playnextlevel" onclick="game.startNextLevel();"><img src="images/icons/next.png">Play Next Level</p>
                     <p id="showLevelScreen" onclick="game.showLevelScreen();"><img src="images/icons/return.png">Return to Level Screen</p>
+                </div>
+            </div>
+
+            <div id="settingsscreen" class="gamelayer">
+                <div>
+                    <p><img src="images/icons/background.png">Select the background of the levels:</p>
+                    <input type="radio" id="stadium" name="background" value="stadium-background" checked>
+                    <label for="stadium">Stadium</label><br>
+                    <input type="radio" id="tennis" name="background" value="tennis-background">
+                    <label for="tennis">Tennis court</label><br>
+
+                    <p><img src="images/icons/music.png">Select the music:</p>
+                    <input type="radio" id="wiimusic" name="music" value="wiimusic" checked>
+                    <label for="wiimusic">Wii Music</label><br>
+                    <input type="radio" id="championsanthem" name="music" value="championsanthem">
+                    <label for="championsanthem">Champions League Anthem</label><br><br>
+                    <img id="acceptSettings" src="images/icons/play_button.png" alt="Accept settings" onclick="game.acceptSettings();">
                 </div>
             </div>
 

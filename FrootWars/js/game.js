@@ -43,18 +43,16 @@ var game = {
 	// Inicialización de objetos, precarga de elementos y pantalla de inicio
 	init: function () {
 		// Inicialización de objetos
-		levels.init();
+		
 		loader.init();
 		mouse.init();
 
 		// Cargar todos los efectos de sonido y música de fondo
 
-		//"Kindergarten" by Gurdonark
-		//http://ccmixter.org/files/gurdonark/26491 is licensed under a Creative Commons license
-		game.backgroundMusic = loader.loadSound('audio/wiimusic');
+		
 
 		game.slingshotReleasedSound = loader.loadSound("audio/cartoonreleased");
-		game.bounceSound = loader.loadSound('audio/bounce2');
+		game.bounceSound = loader.loadSound('audio/bounce');
 		game.breakSound = {
 			"ice": loader.loadSound('audio/icebreak'),
 			"wood": loader.loadSound('audio/woodbreak')
@@ -69,6 +67,24 @@ var game = {
 		game.canvas = document.getElementById('gamecanvas');
 		game.context = game.canvas.getContext('2d');
 	},
+
+	//Fuente de la música de fondo que se podrá cambiar desde Settings
+	srcMusic: "wiimusic",
+
+	//El background del juego es igual para todos los niveles y puede cambiarse en Settings
+	background: 'stadium-background',
+	foreground: 'suelo-foreground',
+
+	acceptSettings: function () {
+		this.loadSettings();
+		this.showGameStartScreen();
+	},
+
+	loadSettings: function () {
+		game.background = $('input[name="background"]:checked').val();
+		game.srcMusic = $('input[name="music"]:checked').val();
+	},
+
 	startBackgroundMusic: function () {
 		var toggleImage = $("#togglemusic")[0];
 		game.backgroundMusic.play();
@@ -91,8 +107,23 @@ var game = {
 		}
 	},
 	showLevelScreen: function () {
+		//Cargamos la música de fondo
+
+		game.backgroundMusic = loader.loadSound('audio/' + game.srcMusic);
+		
+		//Inicializamos los niveles una vez que ya hayamos elegido el fondo deseado
+		levels.init();
+
 		$('.gamelayer').hide();
 		$('#levelselectscreen').show('slow');
+	},
+	showSettingsScreen: function() {
+		$('.gamelayer').hide();
+		$('#settingsscreen').show('slow');
+	},
+	showGameStartScreen: function () {
+		$('.gamelayer').hide();
+		$('#gamestartscreen').show('slow');
 	},
 	restartLevel: function () {
 		window.cancelAnimationFrame(game.animationFrame);
@@ -224,7 +255,7 @@ var game = {
 			game.panTo(heroX);
 
 			//Y esperar hasta que deja de moverse o está fuera de los límites
-			if (!game.currentHero.IsAwake() || heroX < 0 || heroX > game.currentLevel.foregroundImage.width) {
+			if (!game.currentHero.IsAwake() || heroX < 0 || heroX > game.foregroundImage.width) {
 				// Luego borra el viejo héroe
 				box2d.world.DestroyBody(game.currentHero);
 				game.currentHero = undefined;
@@ -310,8 +341,8 @@ var game = {
 
 
 		// Dibujar el fondo con desplazamiento de paralaje
-		game.context.drawImage(game.currentLevel.backgroundImage, game.offsetLeft / 4, 0, 640, 480, 0, 0, 640, 480);
-		game.context.drawImage(game.currentLevel.foregroundImage, game.offsetLeft, 0, 640, 480, 0, 0, 640, 480);
+		game.context.drawImage(game.backgroundImage, game.offsetLeft / 4, 0, 640, 480, 0, 0, 640, 480);
+		game.context.drawImage(game.foregroundImage, game.offsetLeft, 0, 640, 480, 0, 0, 640, 480);
 
 		// Dibujar la honda
 		game.context.drawImage(game.slingshotImage, game.slingshotX - game.offsetLeft, game.slingshotY);
@@ -340,7 +371,7 @@ var game = {
 
 			if (entity) {
 				var entityX = body.GetPosition().x * box2d.scale;
-				if (entityX < 0 || entityX > game.currentLevel.foregroundImage.width || (entity.health && entity.health < 0)) {
+				if (entityX < 0 || entityX > game.foregroundImage.width || (entity.health && entity.health < 0)) {
 					box2d.world.DestroyBody(body);
 					if (entity.type == "villain") {
 						game.score += entity.calories;
@@ -396,8 +427,6 @@ var levels = {
 	// Datos de nivel
 	data: [
 		{   // Primer nivel
-			foreground: 'suelo-foreground',
-			background: 'estadio-background',
 			entities: [
 				{ type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
 				{ type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
@@ -415,8 +444,6 @@ var levels = {
 			]
 		},
 		{   // Segundo nivel
-			foreground: 'suelo-foreground',
-			background: 'estadio-background',
 			entities: [
 				{ type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
 				{ type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
@@ -508,8 +535,8 @@ var levels = {
 
 
 		//Cargar las imágenes de fondo, primer plano y honda
-		game.currentLevel.backgroundImage = loader.loadImage("images/backgrounds/" + level.background + ".png");
-		game.currentLevel.foregroundImage = loader.loadImage("images/backgrounds/" + level.foreground + ".png");
+		game.backgroundImage = loader.loadImage("images/backgrounds/" + game.background + ".png");
+		game.foregroundImage = loader.loadImage("images/backgrounds/" + game.foreground + ".png");
 		game.slingshotImage = loader.loadImage("images/slingshot.png");
 		game.slingshotFrontImage = loader.loadImage("images/slingshot-front.png");
 

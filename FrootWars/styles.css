@@ -77,7 +77,7 @@
 }
 
 /*Fin de pantalla*/
-endingscreen {
+#endingscreen {
     text-align: center;
 }
 
@@ -107,4 +107,36 @@ endingscreen {
     font: 32px Comic Sans MS;
     text-shadow: 0 0 2px #000;
     color: white;
+}
+
+/*Pantalla de configuración*/
+#settingsscreen {
+    text-align: center;
+}
+
+#settingsscreen div {
+    height: 350px;
+    padding-top: 130px;
+    border: 1px;
+    background: rgba(1,1,1,0.5);
+    text-align: left;
+    padding-left:160px;
+    font: 15px Comic Sans MS;
+    text-shadow: 0 0 2px #000;
+    color: white;
+}
+
+#settingsscreen p {
+    font: 20px Comic Sans MS;
+}
+
+#settingsscreen p img{
+    top: 10px;
+    right:10px;
+    position: relative;
+}
+
+#settingsscreen #acceptSettings {
+    position: relative;
+    left: 65px;
 }

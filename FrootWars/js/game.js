@@ -468,8 +468,6 @@ var levels = {
 			]
 		},
 		{
-			foreground: 'suelo-foreground',
-			background: 'estadio-background',
 			entities: [
 				{ type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
 				{ type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },

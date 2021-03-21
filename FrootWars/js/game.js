@@ -212,6 +212,12 @@ var game = {
 		var radiusSquared = Math.pow(game.currentHero.GetUserData().radius, 2);
 		return (distanceSquared <= radiusSquared);
 	},
+
+	//Los héroes mueren tras 6 segundos después de ser lanzados
+	lifeTime : 6000,
+	firedTime : 0,
+	
+
 	handlePanning: function () {
 		if (game.mode == "intro") {
 			if (game.panTo(700)) {
@@ -236,6 +242,7 @@ var game = {
 				game.panTo(game.slingshotX);
 				game.currentHero.SetPosition({ x: (mouse.x + game.offsetLeft) / box2d.scale, y: mouse.y / box2d.scale });
 			} else {
+				game.firedTime = new Date().getTime();
 				game.mode = "fired";
 				game.slingshotReleasedSound.play();
 				var impulseScaleFactor = 0.75;
@@ -254,8 +261,12 @@ var game = {
 			var heroX = game.currentHero.GetPosition().x * box2d.scale;
 			game.panTo(heroX);
 
-			//Y esperar hasta que deja de moverse o está fuera de los límites
-			if (!game.currentHero.IsAwake() || heroX < 0 || heroX > game.foregroundImage.width) {
+			var currentTime = new Date().getTime();
+			timeSpent = currentTime - game.firedTime;
+			console.log(timeSpent);
+
+			//Y esperar hasta que deja de moverse o está fuera de los límites o pase un periodo de tiempo
+			if (!game.currentHero.IsAwake() || heroX < 0 || heroX > game.foregroundImage.width || timeSpent >= game.lifeTime) {
 				// Luego borra el viejo héroe
 				box2d.world.DestroyBody(game.currentHero);
 				game.currentHero = undefined;
@@ -502,8 +513,6 @@ var levels = {
 			]
 		},
 		{
-			foreground: 'suelo-foreground',
-			background: 'estadio-background',
 			entities: [
 				{ type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
 				{ type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
@@ -533,8 +542,6 @@ var levels = {
 			]
 		},
 		{
-			foreground: 'suelo-foreground',
-			background: 'estadio-background',
 			entities: [
 				{ type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
 				{ type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },

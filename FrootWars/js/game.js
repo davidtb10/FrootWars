@@ -50,7 +50,8 @@ var game = {
 		// Cargar todos los efectos de sonido y música de fondo
 
 		
-
+		//Fuente de los sonidos https://freesound.org/
+		// Licencia Creative Commons Attribution 3.0 Unported (CC BY 3.0)
 		game.slingshotReleasedSound = loader.loadSound("audio/cartoonreleased");
 		game.bounceSound = loader.loadSound('audio/bounce');
 		game.breakSound = {
@@ -73,6 +74,8 @@ var game = {
 
 	//El background del juego es igual para todos los niveles y puede cambiarse en Settings
 	background: 'stadium-background',
+	//Fuente: https://opengameart.org/
+	// Licencia: Creative Commons CC0 1.0 Universal (CC0 1.0)
 	foreground: 'suelo-foreground',
 
 	acceptSettings: function () {
@@ -479,8 +482,6 @@ var levels = {
 			]
 		},
 		{	// Tercer nivel
-			foreground: 'suelo-foreground',
-			background: 'estadio-background',
 			entities: [
 				{ type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
 				{ type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
@@ -507,8 +508,6 @@ var levels = {
 			]
 		},
 		{// Cuarto nivel
-			foreground: 'suelo-foreground',
-			background: 'estadio-background',
 			entities: [
 				{ type: "ground", name: "dirt", x: 500, y: 440, width: 1000, height: 20, isStatic: true },
 				{ type: "ground", name: "wood", x: 185, y: 390, width: 30, height: 80, isStatic: true },
@@ -622,6 +621,11 @@ var levels = {
 		}
 	}
 }
+
+//Fuente de los balones
+//https://www.freepik.com/free-vector/balls-for-sports-set_9649035.htm
+//Fuente de las latas
+//https://www.freepik.com/free-vector/various-drinks-metallic-cans-plastic-bottles_9650957.htm
 
 var entities = {
 	definitions: {

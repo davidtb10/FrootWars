@@ -54,6 +54,8 @@ var game = {
 		// Licencia Creative Commons Attribution 3.0 Unported (CC BY 3.0)
 		game.slingshotReleasedSound = loader.loadSound("audio/cartoonreleased");
 		game.bounceSound = loader.loadSound('audio/bounce');
+		//Fuente del asset de hielo https://www.freepik.es/vector-gratis/conjunto-botones-juego-hielo_12876458.htm
+		//Free for commercial use WITH ATTRIBUTION license *
 		game.breakSound = {
 			"ice": loader.loadSound('audio/icebreak'),
 			"wood": loader.loadSound('audio/woodbreak')
@@ -87,6 +89,9 @@ var game = {
 		game.background = $('input[name="background"]:checked').val();
 		game.srcMusic = $('input[name="music"]:checked').val();
 	},
+
+	//Fuente de los iconos: https://www.kenney.nl/assets/ui-pack
+	//Licencia: Creative Commons CC0 1.0 Universal (CC0 1.0) Public Domain Dedication
 
 	startBackgroundMusic: function () {
 		var toggleImage = $("#togglemusic")[0];
